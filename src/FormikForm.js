@@ -36,9 +36,7 @@ const FormikForm = () => {
           type="text"
           id="name"
           name="name"
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          value={formik.values.name}
+          {...formik.getFieldProps("name")}
         />
         {formik.touched.name && formik.errors.name ? (
           <div>{formik.errors.name}</div>
@@ -48,9 +46,7 @@ const FormikForm = () => {
           type="text"
           id="email"
           name="email"
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          value={formik.values.email}
+          {...formik.getFieldProps("email")}
         />
         {formik.touched.email && formik.errors.email ? (
           <div>{formik.errors.email}</div>
@@ -60,9 +56,7 @@ const FormikForm = () => {
           type="text"
           id="message"
           name="message"
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          value={formik.values.message}
+          {...formik.getFieldProps("message")}
         />
         {formik.touched.message && formik.errors.message ? (
           <div>{formik.errors.message}</div>
