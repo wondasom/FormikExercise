@@ -1,5 +1,5 @@
 import React from "react";
-import { useFormik } from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
 const initialValues = {
@@ -21,49 +21,25 @@ const validationSchema = Yup.object({
 });
 
 const FormikForm = () => {
-  const formik = useFormik({
-    initialValues,
-    onSubmit,
-    validationSchema
-  });
-
-  console.log(formik.touched);
   return (
-    <div>
-      <form onSubmit={formik.handleSubmit}>
+    <Formik
+      initialValues={initialValues}
+      validationSchema={validationSchema}
+      onSubmit={onSubmit}
+    >
+      <Form>
         <label htmlFor="name">Name</label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          {...formik.getFieldProps("name")}
-        />
-        {formik.touched.name && formik.errors.name ? (
-          <div>{formik.errors.name}</div>
-        ) : null}
+        <Field type="text" id="name" name="name" />
+        <ErrorMessage name="name" />
         <label htmlFor="email">Email</label>
-        <input
-          type="text"
-          id="email"
-          name="email"
-          {...formik.getFieldProps("email")}
-        />
-        {formik.touched.email && formik.errors.email ? (
-          <div>{formik.errors.email}</div>
-        ) : null}
+        <Field type="text" id="email" name="email" />
+        <ErrorMessage name="email" />
         <label htmlFor="message">Message</label>
-        <input
-          type="text"
-          id="message"
-          name="message"
-          {...formik.getFieldProps("message")}
-        />
-        {formik.touched.message && formik.errors.message ? (
-          <div>{formik.errors.message}</div>
-        ) : null}
+        <Field type="text" id="message" name="message" />
+        <ErrorMessage name="message" />
         <button type="submit">Submit</button>
-      </form>
-    </div>
+      </Form>
+    </Formik>
   );
 };
 
