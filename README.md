@@ -1,2 +1,0 @@
-# FormikExercise
-Created with CodeSandbox
